@@ -2,16 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Acesso Envato</title>
+  <title>Acesso ao Envato</title>
   <style>
     body {
       margin: 0;
       padding: 0;
+      background: #ffffff;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffffff;
     }
     .button {
       padding: 20px 40px;
@@ -26,7 +26,7 @@
 </head>
 <body>
 
-  <button class="button" onclick="window.open('http://lock.toolzbuy.com/envato/access.php/', '_blank')">
+  <button class="button" onclick="window.open('https://envatos.click/', '_blank')">
     Envato Elements Access
   </button>
 
