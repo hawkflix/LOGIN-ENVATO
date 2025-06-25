@@ -2,16 +2,17 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Acesso ao Envato</title>
+  <title>Envato Access</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: white;
       height: 100vh;
+      background: white;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: Arial, sans-serif;
     }
     .button {
       padding: 20px 40px;
