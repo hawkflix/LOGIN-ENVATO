@@ -1,79 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinhaMarca - Login</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+import { useState } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
-        .login-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
+export default function Dashboard() {
+  const [projects, setProjects] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("Em andamento");
 
-        .login-container h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
+  const addProject = () => {
+    if (title.trim() !== "") {
+      const newProject = {
+        id: Date.now(),
+        title,
+        description,
+        status,
+      };
+      setProjects([newProject, ...projects]);
+      setTitle("");
+      setDescription("");
+    }
+  };
 
-        .login-container input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+  return (
+    <div className="p-4 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Organizador de Projetos</h1>
 
-        .login-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+      <div className="grid gap-4 mb-6">
+        <Input
+          placeholder="Nome do Projeto"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <Textarea
+          placeholder="Descrição do Projeto"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <select
+          className="border rounded px-4 py-2"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value="Em andamento">Em andamento</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Pendente">Pendente</option>
+        </select>
+        <Button onClick={addProject}>Adicionar Projeto</Button>
+      </div>
 
-        .login-container button:hover {
-            background-color: #333333;
-        }
-
-        .login-container a {
-            display: block;
-            margin-top: 15px;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <h1>MinhaMarca</h1>
-        <input type="text" placeholder="Nome de usuário ou E-mail">
-        <input type="password" placeholder="Senha">
-        <button>Conectar-se</button>
-        <a href="#">Esqueceu sua senha?</a>
-        <a href="#">Novo aqui? Cadastre-se</a>
+      <div className="grid gap-4">
+        {projects.map((project) => (
+          <Card key={project.id}>
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold">{project.title}</h2>
+              <p className="text-sm text-gray-500 mb-2">{project.status}</p>
+              <p>{project.description}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
-</body>
-</html>
+  );
+}
