@@ -4,14 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel - Elementos Envato</title>
+    <title>Login - MinhaMarca</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        /* Painel */
         .sidebar {
             width: 220px;
             background-color: #000000;
@@ -23,11 +65,6 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 30px;
-            color: #007bff;
         }
 
         .sidebar a {
@@ -95,28 +132,67 @@
 
 <body>
 
-    <div class="sidebar">
-        <h2>MinhaMarca</h2>
-        <a href="#">Dashboard</a>
-        <a href="#">Novo Pedido</a>
-        <a href="#">Histórico</a>
-        <a href="#">Minha Conta</a>
-        <a href="#">Sair</a>
+    <!-- Tela de Login -->
+    <div class="login-container" id="loginPage">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Digite seu usuário">
+        <input type="password" id="password" placeholder="Digite sua senha">
+        <div class="error" id="errorMsg"></div>
+        <button onclick="login()">Entrar</button>
     </div>
 
-    <div class="main">
-        <div class="header">
-            <h1>Elementos Envato</h1>
+    <!-- Painel -->
+    <div id="painelPage" style="display: none;">
+        <div class="sidebar">
+            <a href="#">Dashboard</a>
+            <a href="#">Novo Pedido</a>
+            <a href="#">Histórico</a>
+            <a href="#">Minha Conta</a>
+            <a href="#" onclick="logout()">Sair</a>
         </div>
 
-        <div class="card">
-            <a href="#" class="btn-acesso">Acesso aos Elementos Envato</a>
-            <div class="obs">
-                <p><strong>Observação:</strong> Se você tiver algum problema com o Envato, espere 15 minutos e tente novamente. Se ainda não funcionar, envie uma solicitação ao suporte técnico. Nossa equipe verificará e resolverá o problema...!</p>
+        <div class="main">
+            <div class="header">
+                <h1>Elementos Envato</h1>
+            </div>
+
+            <div class="card">
+                <a href="#" class="btn-acesso">Acesso aos Elementos Envato</a>
+                <div class="obs">
+                    <p><strong>Observação:</strong> Se você tiver algum problema com o Envato, espere 15 minutos e tente novamente. Se ainda não funcionar, envie uma solicitação ao suporte técnico. Nossa equipe verificará e resolverá o problema...!</p>
+                </div>
             </div>
         </div>
-
     </div>
+
+    <script>
+        function login() {
+            var user = document.getElementById('username').value;
+            var pass = document.getElementById('password').value;
+            var error = document.getElementById('errorMsg');
+
+            if (user === '' || pass === '') {
+                error.textContent = 'Por favor, preencha todos os campos.';
+                return;
+            }
+
+            // Login Simples - pode ser ajustado para validação real
+            if (user === 'admin' && pass === '1234') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('painelPage').style.display = 'block';
+            } else {
+                error.textContent = 'Usuário ou senha inválidos!';
+            }
+        }
+
+        function logout() {
+            document.getElementById('painelPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('errorMsg').textContent = '';
+        }
+    </script>
 
 </body>
 
