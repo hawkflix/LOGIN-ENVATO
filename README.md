@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Envato Access</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acesso</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
-      background: white;
+      background-color: #0d0d0d;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
     }
-    .button {
-      padding: 20px 40px;
-      font-size: 20px;
-      background-color: green;
+    button {
+      background-color: #00cc66;
       color: white;
       border: none;
-      border-radius: 8px;
+      padding: 20px 40px;
+      font-size: 1.2em;
+      border-radius: 10px;
       cursor: pointer;
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background-color: #00aa55;
     }
   </style>
 </head>
 <body>
+  <button onclick="acessar()">Acessar Ferramentas</button>
 
-  <button class="button" onclick="window.open('https://envatos.click/', '_blank')">
-    Envato Elements Access
-  </button>
-
+  <script>
+    function acessar() {
+      // Altere aqui o link sempre que quiser atualizar
+      window.location.href = 'https://app.toolzbuy.com/page/ele';
+    }
+  </script>
 </body>
 </html>
