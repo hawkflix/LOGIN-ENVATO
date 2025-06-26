@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinhaMarca - Painel</title>
+    <title>Painel - Elementos Envato</title>
     <style>
         body {
             margin: 0;
@@ -62,9 +63,36 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-acesso {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-acesso:hover {
+            background-color: #218838;
+        }
+
+        .obs {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
+
 <body>
 
     <div class="sidebar">
@@ -78,20 +106,18 @@
 
     <div class="main">
         <div class="header">
-            <h1>Bem-vindo ao Painel</h1>
+            <h1>Elementos Envato</h1>
         </div>
 
         <div class="card">
-            <h2>Resumo</h2>
-            <p>Saldo: R$ 0,00</p>
-            <p>Pedidos em andamento: 0</p>
+            <a href="#" class="btn-acesso">Acesso aos Elementos Envato</a>
+            <div class="obs">
+                <p><strong>Observação:</strong> Se você tiver algum problema com o Envato, espere 15 minutos e tente novamente. Se ainda não funcionar, envie uma solicitação ao suporte técnico. Nossa equipe verificará e resolverá o problema...!</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>Últimos Pedidos</h2>
-            <p>Você ainda não fez nenhum pedido.</p>
-        </div>
     </div>
 
 </body>
+
 </html>
