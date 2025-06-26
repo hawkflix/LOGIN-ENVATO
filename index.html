@@ -3,77 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinhaMarca - Login</title>
+    <title>MinhaMarca - Painel</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
-        .login-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .login-container h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .login-container input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        .login-container button {
-            width: 100%;
-            padding: 12px;
+        .sidebar {
+            width: 220px;
             background-color: #000000;
             color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            display: block;
             font-size: 16px;
         }
 
-        .login-container button:hover {
+        .sidebar a:hover {
             background-color: #333333;
+            padding: 5px;
+            border-radius: 5px;
         }
 
-        .login-container a {
-            display: block;
-            margin-top: 15px;
-            color: #007bff;
-            text-decoration: none;
+        .main {
+            margin-left: 240px;
+            padding: 20px;
         }
 
-        .login-container a:hover {
-            text-decoration: underline;
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>MinhaMarca</h1>
-        <input type="text" placeholder="Nome de usuário ou E-mail">
-        <input type="password" placeholder="Senha">
-        <button>Conectar-se</button>
-        <a href="#">Esqueceu sua senha?</a>
-        <a href="#">Novo aqui? Cadastre-se</a>
+
+    <div class="sidebar">
+        <h2>MinhaMarca</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Novo Pedido</a>
+        <a href="#">Histórico</a>
+        <a href="#">Minha Conta</a>
+        <a href="#">Sair</a>
     </div>
+
+    <div class="main">
+        <div class="header">
+            <h1>Bem-vindo ao Painel</h1>
+        </div>
+
+        <div class="card">
+            <h2>Resumo</h2>
+            <p>Saldo: R$ 0,00</p>
+            <p>Pedidos em andamento: 0</p>
+        </div>
+
+        <div class="card">
+            <h2>Últimos Pedidos</h2>
+            <p>Você ainda não fez nenhum pedido.</p>
+        </div>
+    </div>
+
 </body>
 </html>
