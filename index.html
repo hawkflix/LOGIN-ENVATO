@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acesso Restrito</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinhaMarca - Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    .login-box {
-      background: white;
-      padding: 30px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      width: 100%;
-      max-width: 360px;
-    }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
 
-    .login-box h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
+        .login-container h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #ff5733;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-    button:hover {
-      background-color: #e2461f;
-    }
+        .login-container button:hover {
+            background-color: #333333;
+        }
 
-    .note {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #999;
-      text-align: center;
-    }
-  </style>
+        .login-container a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>Acesso</h2>
-    <form method="POST" action="https://toolzbuy.com/login">
-      <input type="text" name="username" placeholder="Usuário ou E-mail" required />
-      <input type="password" name="password" placeholder="Senha" required />
-      <button type="submit">Entrar</button>
-    </form>
-    <div class="note">Acesso restrito às ferramentas autorizadas.</div>
-  </div>
+    <div class="login-container">
+        <h1>MinhaMarca</h1>
+        <input type="text" placeholder="Nome de usuário ou E-mail">
+        <input type="password" placeholder="Senha">
+        <button>Conectar-se</button>
+        <a href="#">Esqueceu sua senha?</a>
+        <a href="#">Novo aqui? Cadastre-se</a>
+    </div>
 </body>
 </html>
