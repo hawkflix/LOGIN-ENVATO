@@ -1,199 +1,68 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MinhaMarca</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+import { useState } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
-        .login-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            text-align: center;
-        }
+export default function Dashboard() {
+  const [projects, setProjects] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("Em andamento");
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+  const addProject = () => {
+    if (title.trim() !== "") {
+      const newProject = {
+        id: Date.now(),
+        title,
+        description,
+        status,
+      };
+      setProjects([newProject, ...projects]);
+      setTitle("");
+      setDescription("");
+    }
+  };
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+  return (
+    <div className="p-4 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Organizador de Projetos</h1>
 
-        button:hover {
-            background-color: #0056b3;
-        }
+      <div className="grid gap-4 mb-6">
+        <Input
+          placeholder="Nome do Projeto"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <Textarea
+          placeholder="Descrição do Projeto"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <select
+          className="border rounded px-4 py-2"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value="Em andamento">Em andamento</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Pendente">Pendente</option>
+        </select>
+        <Button onClick={addProject}>Adicionar Projeto</Button>
+      </div>
 
-        .error {
-            color: red;
-            font-size: 14px;
-        }
-
-        /* Painel */
-        .sidebar {
-            width: 220px;
-            background-color: #000000;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            margin-bottom: 15px;
-            display: block;
-            font-size: 16px;
-        }
-
-        .sidebar a:hover {
-            background-color: #333333;
-            padding: 5px;
-            border-radius: 5px;
-        }
-
-        .main {
-            margin-left: 240px;
-            padding: 20px;
-        }
-
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .btn-acesso {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-acesso:hover {
-            background-color: #218838;
-        }
-
-        .obs {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #333;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Tela de Login -->
-    <div class="login-container" id="loginPage">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Digite seu usuário">
-        <input type="password" id="password" placeholder="Digite sua senha">
-        <div class="error" id="errorMsg"></div>
-        <button onclick="login()">Entrar</button>
+      <div className="grid gap-4">
+        {projects.map((project) => (
+          <Card key={project.id}>
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold">{project.title}</h2>
+              <p className="text-sm text-gray-500 mb-2">{project.status}</p>
+              <p>{project.description}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
-
-    <!-- Painel -->
-    <div id="painelPage" style="display: none;">
-        <div class="sidebar">
-            <a href="#">Dashboard</a>
-            <a href="#">Novo Pedido</a>
-            <a href="#">Histórico</a>
-            <a href="#">Minha Conta</a>
-            <a href="#" onclick="logout()">Sair</a>
-        </div>
-
-        <div class="main">
-            <div class="header">
-                <h1>Elementos Envato</h1>
-            </div>
-
-            <div class="card">
-                <a href="#" class="btn-acesso">Acesso aos Elementos Envato</a>
-                <div class="obs">
-                    <p><strong>Observação:</strong> Se você tiver algum problema com o Envato, espere 15 minutos e tente novamente. Se ainda não funcionar, envie uma solicitação ao suporte técnico. Nossa equipe verificará e resolverá o problema...!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function login() {
-            var user = document.getElementById('username').value;
-            var pass = document.getElementById('password').value;
-            var error = document.getElementById('errorMsg');
-
-            if (user === '' || pass === '') {
-                error.textContent = 'Por favor, preencha todos os campos.';
-                return;
-            }
-
-            // Login Simples - pode ser ajustado para validação real
-            if (user === 'admin' && pass === '1234') {
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('painelPage').style.display = 'block';
-            } else {
-                error.textContent = 'Usuário ou senha inválidos!';
-            }
-        }
-
-        function logout() {
-            document.getElementById('painelPage').style.display = 'none';
-            document.getElementById('loginPage').style.display = 'flex';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('errorMsg').textContent = '';
-        }
-    </script>
-
-</body>
-
-</html>
+  );
+}
