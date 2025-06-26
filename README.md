@@ -25,39 +25,43 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Organizador de Projetos</h1>
+    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-900 text-white p-6">
+      <h1 className="text-4xl font-bold mb-6 text-center drop-shadow-xl">🛠️ Painel de Projetos</h1>
 
-      <div className="grid gap-4 mb-6">
-        <Input
-          placeholder="Nome do Projeto"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <Textarea
-          placeholder="Descrição do Projeto"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <select
-          className="border rounded px-4 py-2"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        >
-          <option value="Em andamento">Em andamento</option>
-          <option value="Concluído">Concluído</option>
-          <option value="Pendente">Pendente</option>
-        </select>
-        <Button onClick={addProject}>Adicionar Projeto</Button>
+      <div className="bg-zinc-800/60 backdrop-blur-md rounded-2xl shadow-2xl p-6 max-w-3xl mx-auto mb-10">
+        <div className="grid gap-4">
+          <Input
+            className="bg-zinc-700 border-zinc-600 text-white placeholder:text-zinc-400"
+            placeholder="Nome do Projeto"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Textarea
+            className="bg-zinc-700 border-zinc-600 text-white placeholder:text-zinc-400"
+            placeholder="Descrição do Projeto"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <select
+            className="bg-zinc-700 border-zinc-600 text-white rounded px-4 py-2"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="Em andamento">Em andamento</option>
+            <option value="Concluído">Concluído</option>
+            <option value="Pendente">Pendente</option>
+          </select>
+          <Button className="bg-emerald-500 hover:bg-emerald-600 transition-colors" onClick={addProject}>Adicionar Projeto</Button>
+        </div>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-6 max-w-4xl mx-auto">
         {projects.map((project) => (
-          <Card key={project.id}>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold">{project.title}</h2>
-              <p className="text-sm text-gray-500 mb-2">{project.status}</p>
-              <p>{project.description}</p>
+          <Card key={project.id} className="bg-zinc-800 border-zinc-700 shadow-md hover:scale-[1.02] transition-transform">
+            <CardContent className="p-5">
+              <h2 className="text-2xl font-bold text-emerald-400 mb-1">{project.title}</h2>
+              <p className="text-sm italic text-zinc-400 mb-2">Status: {project.status}</p>
+              <p className="text-zinc-200 leading-relaxed">{project.description}</p>
             </CardContent>
           </Card>
         ))}
