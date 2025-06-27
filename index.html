@@ -1,71 +1,66 @@
-import { useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-
-export default function Dashboard() {
-  const [projects, setProjects] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("Em andamento");
-
-  const addProject = () => {
-    if (title.trim() !== "") {
-      const newProject = {
-        id: Date.now(),
-        title,
-        description,
-        status,
-      };
-      setProjects([newProject, ...projects]);
-      setTitle("");
-      setDescription("");
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu LinkTree</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
-  };
+    header img {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+    }
+    .link {
+      background: #222;
+      padding: 15px 20px;
+      margin: 10px 0;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s;
+      border: 1px solid #333;
+    }
+    .link:hover {
+      background: #444;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://via.placeholder.com/150" alt="Minha Foto">
+    <h1>Seu Nome ou Título</h1>
+  </header>
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-900 text-white p-6">
-      <h1 className="text-4xl font-bold mb-6 text-center drop-shadow-xl">🛠️ Painel de Projetos</h1>
+  <!-- Links Editáveis -->
+  <a class="link" href="https://seulink1.com" target="_blank">Título do Link 1</a>
+  <a class="link" href="https://seulink2.com" target="_blank">Título do Link 2</a>
+  <a class="link" href="https://seulink3.com" target="_blank">Título do Link 3</a>
 
-      <div className="bg-zinc-800/60 backdrop-blur-md rounded-2xl shadow-2xl p-6 max-w-3xl mx-auto mb-10">
-        <div className="grid gap-4">
-          <Input
-            className="bg-zinc-700 border-zinc-600 text-white placeholder:text-zinc-400"
-            placeholder="Nome do Projeto"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <Textarea
-            className="bg-zinc-700 border-zinc-600 text-white placeholder:text-zinc-400"
-            placeholder="Descrição do Projeto"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <select
-            className="bg-zinc-700 border-zinc-600 text-white rounded px-4 py-2"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="Em andamento">Em andamento</option>
-            <option value="Concluído">Concluído</option>
-            <option value="Pendente">Pendente</option>
-          </select>
-          <Button className="bg-emerald-500 hover:bg-emerald-600 transition-colors" onClick={addProject}>Adicionar Projeto</Button>
-        </div>
-      </div>
-
-      <div className="grid gap-6 max-w-4xl mx-auto">
-        {projects.map((project) => (
-          <Card key={project.id} className="bg-zinc-800 border-zinc-700 shadow-md hover:scale-[1.02] transition-transform">
-            <CardContent className="p-5">
-              <h2 className="text-2xl font-bold text-emerald-400 mb-1">{project.title}</h2>
-              <p className="text-sm italic text-zinc-400 mb-2">Status: {project.status}</p>
-              <p className="text-zinc-200 leading-relaxed">{project.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
+  <footer>
+    © 2025 - Seu Nome ou Empresa
+  </footer>
+</body>
+</html>
